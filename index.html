@@ -1,29 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assets/fonts/fonts.css">
-    <script src="script.js" defer></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="fonts.css" />
+        <link rel="icon" href="./assets/icons/fotogram_icon.svg"/>
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css" />
 
-    <title>Fotogram</title>
-</head>
-<body>
-    <header>
-            <section class="header_logo">
-                <img class="flower" src="./assets/icons/fotogram_icon.svg">
-                <img class="text" src="./assets/img/fotogram_header.png">
+        <title>Fotogram</title>
+    </head>
+    <body onload="renderGallery()">
+        <header>
+            <img class="flower" src="./assets/icons/fotogram_icon.svg" />
+            <img class="text" src="./assets/img/fotogram_header.png" />
+        </header>
+
+        <main>
+            <section class="gallery">
+                <h1>Your personal photo album</h1>
+                <div id="gallery_content"></div>
             </section>
-    </header>
+        </main>
 
-    <footer>
+        <footer>
             <div class="footer_da_logo">
-                <img src="./assets/img/footer_logo_da.png">
+                <img src="./assets/icons/Icon_da.svg" />
+                <img src="./assets/icons/Text_da.svg" />
             </div>
             <div class="footer_text">
-                <img src="./assets/img/© 2023 Developer Akademie GmbH.png">
+                <img src="./assets/icons/© 2023 Developer Akademie GmbH.svg" />
             </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 </html>
