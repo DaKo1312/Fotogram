@@ -3,26 +3,47 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="fonts.css" />
-        <link rel="icon" href="./assets/icons/fotogram_icon.svg"/>
+        <link rel="icon" href="./assets/icons/fotogram_icon.svg" />
         <script src="script.js" defer></script>
+        <link rel="stylesheet" href="fonts.css" />
         <link rel="stylesheet" href="style.css" />
 
         <title>Fotogram</title>
     </head>
-    <body onload="renderGallery()">
+    <body>
         <header>
-            <img class="flower" src="./assets/icons/fotogram_icon.svg" />
-            <img class="text" src="./assets/img/fotogram_header.png" />
+            <div class="fotogram_logo">
+                <img class="flower" src="./assets/icons/fotogram_icon.svg" />
+                <img class="text" src="./assets/img/fotogram_header.png" />
+            </div>
         </header>
 
-        <main>
-            <section class="gallery">
-                <h1>Your personal photo album</h1>
-                <div id="gallery_content"></div>
-            </section>
-        </main>
+        <div class="container">
+            <main>
+                <section class="gallery">
+                    <h1>Your personal photo album</h1>
+                    <div id="gallery_content"></div>
+                </section>
+                <div class="test">
+                    <dialog id="lightbox" class="myDialog">
+                        <header>
+                            <p>Photo Title</p>
+                            <button onclick="closeDialog()">
+                                <img src="./assets/icons/x 1=Default.svg" />
+                            </button>
+                        </header>
 
+                        <sectionn>
+                        </section>
+
+                        <footer class="myDialog_footer">
+                            <img src="./assets/icons/Button_left.svg">
+                            <img src="./assets/icons/Button_right.svg">
+                        </footer>
+                    </dialog>
+                </div>
+            </main>
+        </div>
         <footer>
             <div class="footer_da_logo">
                 <img src="./assets/icons/Icon_da.svg" />
