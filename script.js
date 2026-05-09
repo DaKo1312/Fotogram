@@ -7,7 +7,8 @@ for (let i = 0; i <= 11; i++) {
 
     item.classList.add("gallery_item"); // Klasse für das Div
 
-    const img = document.createElement("img"); // Bild erstellen
+    const img = document.createElement("img"); // Bild wird erstellt
+    img.alt = `Photo ${i + 1}`; // Bild Name wird erstellt
 
     img.src = `./assets/img/gallery/${i}.jpg`; // Bildpfad / Formatierung festlegen
     img.width = 150;
@@ -22,25 +23,65 @@ for (let i = 0; i <= 11; i++) {
 
 // #region overlay
 
+const overlay = document.getElementById("overlay");
+let currentImageIndex = 0;
 const lightbox = document.getElementById("lightbox");
-document.body.appendChild(lightbox);
+const lightboxImg = document.getElementById("lightbox_img");
+const lightboxTitle = document.getElementById("lightbox_title");
+const closeBtn = document.getElementById("closeBtn");
+const imageCounter = document.getElementById("image_counter");
+const images = document.querySelectorAll(".gallery_item img"); // packt sich alle Bilder
 
-const images = document.querySelectorAll("img");
-images.forEach((image) => {
-    image.addEventListener("click", (e) => {
-        lightbox.classList.add("active");
-        const img = document.createElement("img");
-        img.src = image.src;
-        while (lightbox.firstChild) {
-            lightbox.removeChild(lightbox.firstChild);
-        }
-        lightbox.appendChild(img);
+function updateLightbox() { // Funktion wird definiert
+    const currentImage = images[currentImageIndex];
+    lightboxImg.src = currentImage.src;
+    lightboxTitle.innerText = currentImage.alt;
+    imageCounter.innerText =
+        `${currentImageIndex + 1} / ${images.length}`;
+}
+
+images.forEach((image, index) => { // Klick auf das Bild (jedes)
+
+    image.addEventListener("click", () => {
+        lightboxImg.src = image.src; // setzt das Bild in die Lightbox
+        lightboxTitle.innerText = image.alt; // erzeugt einen img Namen
+        overlay.style.display = "flex"; // zeigt das Overlay an
     });
 });
 
-lightbox.addEventListener("click", (e) => {
-    if (e.target !== e.currentTarget) return;
-    lightbox.classList.remove("active");
+overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+        overlay.style.display = "none";
+    }
+});
+
+closeBtn.addEventListener("click", () => {
+    overlay.style.display = "none";
+});
+
+nextBtn.addEventListener("click", () => { // Bild vor
+    currentImageIndex++;
+    if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+    }
+    
+    updateLightbox();
+});
+
+prevBtn.addEventListener("click", () => { // Bild zurück
+    currentImageIndex--;
+    if (currentImageIndex < 0) {
+        currentImageIndex = images.length - 1;
+    }
+
+    updateLightbox();
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        overlay.style.display = "none";
+    }
 });
 
 // #endregion
+
