@@ -30,17 +30,17 @@ const lightboxImg = document.getElementById("lightbox_img");
 const lightboxTitle = document.getElementById("lightbox_title");
 const closeBtn = document.getElementById("closeBtn");
 const imageCounter = document.getElementById("image_counter");
-const images = document.querySelectorAll(".gallery_item img"); // packt sich alle Bilder
+const images = document.querySelectorAll(".gallery_item img");
 
-function updateLightbox() { // Funktion wird definiert
+function updateLightbox() {
     const currentImage = images[currentImageIndex];
     lightboxImg.src = currentImage.src;
     lightboxTitle.innerText = currentImage.alt;
-    imageCounter.innerText =
-        `${currentImageIndex + 1} / ${images.length}`;
+    imageCounter.innerText = `${currentImageIndex + 1} / ${images.length}`;
 }
 
-images.forEach((image, index) => { // Klick auf das Bild (jedes)
+images.forEach((image, index) => {
+    // Klick auf das Bild (jedes)
 
     image.addEventListener("click", () => {
         lightboxImg.src = image.src; // setzt das Bild in die Lightbox
@@ -59,16 +59,18 @@ closeBtn.addEventListener("click", () => {
     overlay.style.display = "none";
 });
 
-nextBtn.addEventListener("click", () => { // Bild vor
+nextBtn.addEventListener("click", () => {
+    // Bild vor
     currentImageIndex++;
     if (currentImageIndex >= images.length) {
         currentImageIndex = 0;
     }
-    
+
     updateLightbox();
 });
 
-prevBtn.addEventListener("click", () => { // Bild zurück
+prevBtn.addEventListener("click", () => {
+    // Bild zurück
     currentImageIndex--;
     if (currentImageIndex < 0) {
         currentImageIndex = images.length - 1;
@@ -84,4 +86,3 @@ document.addEventListener("keydown", (e) => {
 });
 
 // #endregion
-
