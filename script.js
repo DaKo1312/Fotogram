@@ -46,7 +46,7 @@ images.forEach((image, index) => { // Klick auf das Bild (jedes)
     image.addEventListener("click", () => {
         currentImageIndex = index;
         overlay.style.display = "flex";
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"; // deaktiviert das scrollen bei aktiver Lightbox
     });
 
     updateLightbox();
@@ -55,7 +55,7 @@ images.forEach((image, index) => { // Klick auf das Bild (jedes)
 overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
         overlay.style.display = "none";
-        document.body.style.overflow = "";
+        document.body.style.overflow = ""; // aktiviert das scrollen bei inaktiver Lightbox
     }
 });
 
