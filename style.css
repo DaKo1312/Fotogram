@@ -77,7 +77,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 160px;
+    padding: 160px 0 160px 0;
     width: 100%;
     width: 1170px;
     gap: 50px;
@@ -255,6 +255,19 @@ header {
         height: 375px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    #lightbox {
+        weight: 280px;
+        height: 600px;
+
+        #lightbox_img {
+            width: 240px;
+            height: 300px;
+        }
+    }
+}
+
 
 #lightbox_title {
     color: white;

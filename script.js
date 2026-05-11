@@ -1,23 +1,26 @@
 // #region gallery
 
-const gallery = document.getElementById("gallery_content");
+function createGallery() {
+    const gallery = document.getElementById("gallery_content");
 
-for (let i = 0; i <= 11; i++) {
-    const item = document.createElement("div"); // erstellt 12 divs
+    for (let i = 0; i <= 11; i++) {
+        const item = document.createElement("div"); // erstellt 12 divs
 
-    item.classList.add("gallery_item"); // Klasse für das Div
+        item.classList.add("gallery_item"); // Klasse für das Div
 
-    const img = document.createElement("img"); // Bild wird erstellt
-    img.alt = `Photo ${i + 1}`; // Bild Name wird erstellt
+        const img = document.createElement("img"); // Bild wird erstellt
+        img.alt = `Photo ${i + 1}`; // alternativ Text zu jedem Bild dem index + 1
 
-    img.src = `./assets/img/gallery/${i}.jpg`; // Bildpfad / Formatierung festlegen
-    img.width = 150;
-    img.height = 150;
+        img.src = `./assets/img/gallery/${i}.jpg`; // Bildpfad / Formatierung festlegen
+        img.width = 150; // der Browser nimm hier automatisch an das es Pixel sind
+        img.height = 150;
 
-    item.appendChild(img); // Bild dem Div hinzufügen
+        item.appendChild(img); // Bild dem Div hinzufügen
 
-    gallery.appendChild(item); // Div der Gallery hinzufügen
+        gallery.appendChild(item); // Div der Gallery hinzufügen
+    }
 }
+createGallery();
 
 // #endregion
 
@@ -43,13 +46,16 @@ images.forEach((image, index) => { // Klick auf das Bild (jedes)
     image.addEventListener("click", () => {
         currentImageIndex = index;
         overlay.style.display = "flex";
-        updateLightbox();
+        document.body.style.overflow = "hidden";
     });
+
+    updateLightbox();
 });
 
 overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
         overlay.style.display = "none";
+        document.body.style.overflow = "";
     }
 });
 
