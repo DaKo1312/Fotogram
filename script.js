@@ -26,8 +26,8 @@ createGallery();
 
 // #region overlay
 
-const overlay = document.getElementById("overlay");
 let currentImageIndex = 0;
+
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox_img");
 const lightboxTitle = document.getElementById("lightbox_title");
@@ -42,25 +42,40 @@ function updateLightbox() {
     imageCounter.innerText = `${currentImageIndex + 1} / ${images.length}`;
 }
 
-images.forEach((image, index) => { // Klick auf das Bild (jedes)
+images.forEach((image, index) => {
     image.addEventListener("click", () => {
         currentImageIndex = index;
-        overlay.style.display = "flex";
-        document.body.style.overflow = "hidden"; // deaktiviert das scrollen bei aktiver Lightbox
+        updateLightbox();
+        lightbox.showModal();
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
     });
 
-    updateLightbox();
 });
 
-overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-        overlay.style.display = "none";
-        document.body.style.overflow = ""; // aktiviert das scrollen bei inaktiver Lightbox
+lightbox.addEventListener("click", (e) => {
+
+    const rect = lightbox.getBoundingClientRect();
+    const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+
+    if (!isInDialog) {
+        lightbox.close();
+
+        document.documentElement.style.overflow = "auto";
+        document.body.style.overflow = "auto";
     }
 });
 
 closeBtn.addEventListener("click", () => {
-    overlay.style.display = "none";
+
+    lightbox.close();
+
+    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "auto";
 });
 
 nextBtn.addEventListener("click", () => {
@@ -81,12 +96,6 @@ prevBtn.addEventListener("click", () => {
     }
 
     updateLightbox();
-});
-
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        overlay.style.display = "none";
-    }
 });
 
 // #endregion

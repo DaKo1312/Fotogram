@@ -19,41 +19,41 @@
         </header>
         <div class="container">
             <main>
-                <section class="gallery">
+                <div class="gallery">
                     <h1>
                         Your personal <br />
                         photo album
                     </h1>
                     <div id="gallery_content" class="gallery_content"></div>
-                    <div id="overlay">
-                        <div id="lightbox">
-                            <div class="lightbox_header">
-                                <h2 id="lightbox_title"></h2>
+                    <dialog id="lightbox">
+                        <div class="lightbox_header">
+                            <h2 id="lightbox_title"></h2>
+                            <img
+                                id="closeBtn"
+                                src="./assets/icons/x 1=Default.svg"
+                                alt=""
+                            />
+                        </div>
+                        <div class="lightbox_img_wrapper">
+                            <img id="lightbox_img" src="" alt="" />
+                        </div>
+                        <div class="lightbox_footer">
+                            <button id="prevBtn">
                                 <img
-                                    id="closeBtn"
-                                    src="./assets/icons/x 1=Default.svg"
+                                    src="./assets/icons/Button_left.svg"
                                     alt=""
                                 />
-                            </div>
-                            <img id="lightbox_img" src="" alt="" />
-                            <div class="lightbox_footer">
-                                <button id="prevBtn">
-                                    <img
-                                        src="./assets/icons/Button_left.svg"
-                                        alt=""
-                                    />
-                                </button>
-                                <span id="image_counter"> 1 / 12 </span>
-                                <button id="nextBtn">
-                                    <img
-                                        src="./assets/icons/Button_right.svg"
-                                        alt=""
-                                    />
-                                </button>
-                            </div>
+                            </button>
+                            <span id="image_counter">1 / 12</span>
+                            <button id="nextBtn">
+                                <img
+                                    src="./assets/icons/Button_right.svg"
+                                    alt=""
+                                />
+                            </button>
                         </div>
-                    </div>
-                </section>
+                    </dialog>
+                </div>
             </main>
         </div>
         <footer>
