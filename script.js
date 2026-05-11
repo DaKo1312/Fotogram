@@ -39,13 +39,11 @@ function updateLightbox() {
     imageCounter.innerText = `${currentImageIndex + 1} / ${images.length}`;
 }
 
-images.forEach((image, index) => {
-    // Klick auf das Bild (jedes)
-
+images.forEach((image, index) => { // Klick auf das Bild (jedes)
     image.addEventListener("click", () => {
-        lightboxImg.src = image.src; // setzt das Bild in die Lightbox
-        lightboxTitle.innerText = image.alt; // erzeugt einen img Namen
-        overlay.style.display = "flex"; // zeigt das Overlay an
+        currentImageIndex = index;
+        overlay.style.display = "flex";
+        updateLightbox();
     });
 });
 
